@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class PHPOID_Distribution_TemplateUpdater</title>
+
+	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+		</div>
+
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-PHPOID_Distribution_TemplateUpdater.html">PHPOID_Distribution_TemplateUpdater</a></li>
+				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall</a></li>
+				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier</a></li>
+				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class PHPOID_Distribution_TemplateUpdater</h1>
+
+
+	<div class="description">
+	<p>Amiro.CMS templates updater.</p>
+
+<p>Example:</p>
+
+<pre><span class="php-comment">// &quot;install_after.php&quot; / &quot;install.php&quot; context</span>
+
+<span class="php-var">$tplStorage</span> = AMI::getResource(<span class="php-quote">'storage/tpl'</span>);
+<span class="php-var">$updater</span> = <span class="php-keyword1">new</span> PHPOID_Distribution_TemplateUpdater(
+    <span class="php-var">$tplStorage</span>,
+    <span class="php-var">$this</span>-&gt;oArgs-&gt;modId
+);
+<span class="php-var">$template</span> = <span class="php-quote">&quot;templates/someTemplate.tpl&quot;</span>;
+<span class="php-var">$updater</span>-&gt;load(<span class="php-var">$template</span>);
+
+<span class="php-var">$prependix</span> = <span class="php-quote">&lt;&lt;&lt;EOT
+&lt;h1&gt;This code will be added to the begining of set&lt;/h1&gt;
+EOT;
+</span><span class="php-var">$updater</span>-&gt;patch(
+    PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+    PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_TO_BEGINING,
+    <span class="php-keyword1">array</span>(<span class="php-quote">'setName1'</span>, <span class="php-quote">'setName2),
+    $prependix
+);
+
+$appenix = &lt;&lt;&lt;EOT
+&lt;h1&gt;This code will be added to the end of set&lt;/h1&gt;
+EOT;
+$updater-&gt;patch(
+    PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+    PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_TO_END,
+    array('</span>setName1<span class="php-quote">', '</span>setName2),
+    <span class="php-var">$appenix</span>
+);
+
+<span class="php-var">$insertion</span> = <span class="php-quote">&lt;&lt;&lt;EOT
+&lt;h1&gt;This code will be added once before searching string&lt;/h1&gt;
+EOT;
+</span><span class="php-var">$updater</span>-&gt;patch(
+    PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+    PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_BEFORE,
+    <span class="php-keyword1">array</span>(<span class="php-quote">'setName1'</span>, <span class="php-quote">'setName2),
+    $insertion,
+    '</span>searching string<span class="php-quote">'
+);
+
+$insertion = &lt;&lt;&lt;EOT
+&lt;h1&gt;This code will be added once after searching string&lt;/h1&gt;
+EOT;
+$updater-&gt;patch(
+    PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+    PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_AFTER,
+    array('</span>setName1<span class="php-quote">', '</span>setName2),
+    <span class="php-var">$insertion</span>,
+    <span class="php-quote">'searching string'</span>
+);
+
+<span class="php-var">$replacement</span> = <span class="php-quote">&lt;&lt;&lt;EOT
+&lt;h1&gt;This code will replace all searching strings&lt;/h1&gt;
+EOT;
+</span><span class="php-var">$updater</span>-&gt;patch(
+    PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+    PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_REPLACE,
+    <span class="php-keyword1">array</span>(<span class="php-quote">'setName1'</span>, <span class="php-quote">'setName2),
+    $replacement,
+    '</span>searching string<span class="php-quote">'
+);
+
+$replacement = &lt;&lt;&lt;EOT
+&lt;h1&gt;This code will replace searching string (searching string will be
+processed as regular expression)&lt;/h1&gt;
+EOT;
+$updater-&gt;patch(
+    PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+    PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_REPLACE_REG,
+    array('</span>setName1<span class="php-quote">', '</span>setName2),
+    <span class="php-var">$replacement</span>,
+    <span class="php-quote">'/reqular expression/'</span>
+);
+
+<span class="php-var">$updater</span>-&gt;save(<span class="php-var">$template</span>);
+
+
+<span class="php-comment">// &quot;uninstall_before.php&quot; / &quot;uninstall_after.php&quot; / &quot;uninstall.php&quot; /</span>
+<span class="php-comment">// &quot;uninstall_all.php&quot; context</span>
+
+<span class="php-comment">// Next call will rollback all changes by marker</span>
+<span class="php-var">$tplStorage</span> = AMI::getResource(<span class="php-quote">'storage/tpl'</span>);
+<span class="php-var">$updater</span> = <span class="php-keyword1">new</span> PHPOID_Distribution_TemplateUpdater(
+    <span class="php-var">$tplStorage</span>,
+    <span class="php-var">$this</span>-&gt;oArgs-&gt;modId
+);
+<span class="php-var">$template</span> = <span class="php-quote">&quot;templates/someTemplate.tpl&quot;</span>;
+<span class="php-var">$updater</span>-&gt;load(<span class="php-var">$template</span>);
+<span class="php-var">$updater</span>-&gt;rollback();
+
+<span class="php-var">$updater</span>-&gt;save(<span class="php-var">$template</span>);</pre>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> Distribution\Template<br>
+
+				<b>Copyright:</b>
+				<a href="http://php0id.web-box.ru/" target="_blank">php0id</a><br>
+				<b>License:</b>
+				<a href="https://opensource.org/licenses/mit-license.php">https://opensource.org/licenses/mit-license.php</a><br>
+				<b>Link:</b>
+				<a href="https://github.com/php0id/PHPOID/tree/master">https://github.com/php0id/PHPOID/tree/master</a><br>
+			<b>Located at</b> <a href="source-class-PHPOID_Distribution_TemplateUpdater.html#9-704" title="Go to source code">PHPOID/Distribution/PHPOID_Distribution_TemplateUpdater.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#182-196" title="Go to source code">__construct</a>( <span>AMI_iStorage <var>$storage</var></span>, <span>string <var>$marker</var></span> )</code>
+
+		<div class="description short">
+			<p>Constructor.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Constructor.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$storage</var></dt>
+					<dd></dd>
+					<dt><var>$marker</var></dt>
+					<dd>Marker used to rollback patch</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDuplicatesChecking" id="_setDuplicatesChecking">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDuplicatesChecking">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#198-207" title="Go to source code">setDuplicatesChecking</a>( <span>boolean <var>$checkDuplicate</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets checking for duplicate patching.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets checking for duplicate patching.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$checkDuplicate</var></dt>
+					<dd></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setRawContents" id="_setRawContents">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setRawContents">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#209-219" title="Go to source code">setRawContents</a>( <span>string <var>$contents</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets raw template contents.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets raw template contents.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$contents</var></dt>
+					<dd>Template contents</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getRawContents" id="_getRawContents">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getRawContents">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#221-229" title="Go to source code">getRawContents</a>( )</code>
+
+		<div class="description short">
+			<p>Returns template raw contents.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns template raw contents.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					string
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="load" id="_load">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_load">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#231-250" title="Go to source code">load</a>( <span>string <var>$template</var></span> )</code>
+
+		<div class="description short">
+			<p>Loads template contents.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Loads template contents.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$template</var></dt>
+					<dd>Template name</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					RuntimeExeption<br>Possible code is <a href="self::ERR_CANNOT_LOAD">self::ERR_CANNOT_LOAD</a>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="save" id="_save">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_save">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#252-278" title="Go to source code">save</a>( <span>string <var>$template</var></span>, <span>string <var>$backup</var> = <span class="php-quote">''</span></span> )</code>
+
+		<div class="description short">
+			<p>Saves template contents.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Saves template contents.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$template</var></dt>
+					<dd>Template name</dd>
+					<dt><var>$backup</var></dt>
+					<dd>Backup template name</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					RuntimeExeption<br>If cannot backup or save
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSetsByName" id="_getSetsByName">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSetsByName">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#280-308" title="Go to source code">getSetsByName</a>( <span>string <var>$name</var> = <span class="php-quote">''</span></span> )</code>
+
+		<div class="description short">
+			<p>Returns sets by passed name</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns sets by passed name</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd>Set name, '' for all</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="parseSet" id="_parseSet">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_parseSet">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#310-328" title="Go to source code">parseSet</a>( <span>string <var>$contents</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$contents</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setContents" id="_setContents">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setContents">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#330-359" title="Go to source code">setContents</a>( <span>string <var>$name</var></span>, <span>string <var>$contents</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets set contents.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets set contents.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd>Set name</dd>
+					<dt><var>$contents</var></dt>
+					<dd></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMarker" id="_getMarker">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMarker">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#361-416" title="Go to source code">getMarker</a>( <span>string <var>$position</var></span>, <span>string <var>$type</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns marker for future template rollback.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns marker for future template rollback.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$position</var></dt>
+					<dd><p><a href="self::MARKER_POS_OPENING">self::MARKER_POS_OPENING</a> or
+                          <a href="self::MARKER_POS_CLOSING">self::MARKER_POS_CLOSING</a></p></dd>
+					<dt><var>$type</var></dt>
+					<dd><p><a href="self::MARKER_TYPE_ADD">self::MARKER_TYPE_ADD</a> or
+                          <a href="self::MARKER_TYPE_DELETE">self::MARKER_TYPE_DELETE</a></p></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					InvalidArgumentException<br><p>Possible codes are
+        <a href="self::ERR_INVALID_MARKER_POS">self::ERR_INVALID_MARKER_POS</a>,
+        <a href="self::ERR_INVALID_MARKER_TYPE">self::ERR_INVALID_MARKER_TYPE</a></p>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="patch" id="_patch">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_patch">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#418-647" title="Go to source code">patch</a>( <span>string <var>$type</var></span>, <span>string <var>$method</var></span>, <span>array <var>$names</var></span>, <span>string <var>$contents</var> = <span class="php-keyword1">FALSE</span></span>, <span>string <var>$pattern</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+
+		<div class="description short">
+			<p>Patch sets.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Patch sets.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$type</var></dt>
+					<dd><p><a href="self::PATCH_TYPE_ADD">self::PATCH_TYPE_ADD</a> or
+                          <a href="self::PATCH_TYPE_DELETE">self::PATCH_TYPE_DELETE</a></p></dd>
+					<dt><var>$method</var></dt>
+					<dd><p><a href="self::PATCH_METHOD_TO_BEGINING">self::PATCH_METHOD_TO_BEGINING</a>,
+                          <a href="self::PATCH_METHOD_TO_END">self::PATCH_METHOD_TO_END</a>,
+                          <a href="self::PATCH_METHOD_BEFORE">self::PATCH_METHOD_BEFORE</a>,
+                          <a href="self::PATCH_METHOD_AFTER">self::PATCH_METHOD_AFTER</a>,
+                          <a href="self::PATCH_METHOD_REPLACE">self::PATCH_METHOD_REPLACE</a> or
+                          <a href="self::PATCH_METHOD_REG_REPLACE">self::PATCH_METHOD_REG_REPLACE</a></p></dd>
+					<dt><var>$names</var></dt>
+					<dd>Array of set names</dd>
+					<dt><var>$contents</var></dt>
+					<dd></dd>
+					<dt><var>$pattern</var></dt>
+					<dd>Search pattern</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					InvalidArgumentException<br><p>Possible codes are
+        <a href="self::ERR_INVALID_PATCH_TYPE">self::ERR_INVALID_PATCH_TYPE</a>,
+        <a href="self::ERR_INVALID_PATCH_METHOD">self::ERR_INVALID_PATCH_METHOD</a></p>
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rollback" id="_rollback">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rollback">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#649-692" title="Go to source code">rollback</a>( )</code>
+
+		<div class="description short">
+			<p>Rollbacks patch.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Rollbacks patch.</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="parseSets" id="_parseSets">
+
+		<td class="attributes"><code>
+			 protected 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_parseSets">#</a>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#694-703" title="Go to source code">parseSets</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="VERSION" id="VERSION">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-VERSION.html#118" title="Go to source code"><b>VERSION</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#VERSION" class="anchor">#</a>
+				<code><span class="php-quote">'0.1'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ERR_CANNOT_LOAD" id="ERR_CANNOT_LOAD">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-ERR_CANNOT_LOAD.html#120" title="Go to source code"><b>ERR_CANNOT_LOAD</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ERR_CANNOT_LOAD" class="anchor">#</a>
+				<code><span class="php-num">1</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ERR_CANNOT_BACKUP" id="ERR_CANNOT_BACKUP">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-ERR_CANNOT_BACKUP.html#121" title="Go to source code"><b>ERR_CANNOT_BACKUP</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ERR_CANNOT_BACKUP" class="anchor">#</a>
+				<code><span class="php-num">2</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ERR_CANNOT_SAVE" id="ERR_CANNOT_SAVE">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-ERR_CANNOT_SAVE.html#122" title="Go to source code"><b>ERR_CANNOT_SAVE</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ERR_CANNOT_SAVE" class="anchor">#</a>
+				<code><span class="php-num">3</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ERR_INVALID_MARKER_TYPE" id="ERR_INVALID_MARKER_TYPE">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-ERR_INVALID_MARKER_TYPE.html#123" title="Go to source code"><b>ERR_INVALID_MARKER_TYPE</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ERR_INVALID_MARKER_TYPE" class="anchor">#</a>
+				<code><span class="php-num">4</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ERR_INVALID_MARKER_POS" id="ERR_INVALID_MARKER_POS">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-ERR_INVALID_MARKER_POS.html#124" title="Go to source code"><b>ERR_INVALID_MARKER_POS</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ERR_INVALID_MARKER_POS" class="anchor">#</a>
+				<code><span class="php-num">5</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ERR_INVALID_PATCH_TYPE" id="ERR_INVALID_PATCH_TYPE">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-ERR_INVALID_PATCH_TYPE.html#125" title="Go to source code"><b>ERR_INVALID_PATCH_TYPE</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ERR_INVALID_PATCH_TYPE" class="anchor">#</a>
+				<code><span class="php-num">6</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="ERR_INVALID_PATCH_METHOD" id="ERR_INVALID_PATCH_METHOD">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-ERR_INVALID_PATCH_METHOD.html#126" title="Go to source code"><b>ERR_INVALID_PATCH_METHOD</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#ERR_INVALID_PATCH_METHOD" class="anchor">#</a>
+				<code><span class="php-num">7</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="MARKER_POS_OPENING" id="MARKER_POS_OPENING">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-MARKER_POS_OPENING.html#128" title="Go to source code"><b>MARKER_POS_OPENING</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#MARKER_POS_OPENING" class="anchor">#</a>
+				<code><span class="php-quote">'opening'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="MARKER_POS_CLOSING" id="MARKER_POS_CLOSING">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-MARKER_POS_CLOSING.html#129" title="Go to source code"><b>MARKER_POS_CLOSING</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#MARKER_POS_CLOSING" class="anchor">#</a>
+				<code><span class="php-quote">'closing'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="MARKER_TYPE_ADD" id="MARKER_TYPE_ADD">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-MARKER_TYPE_ADD.html#130" title="Go to source code"><b>MARKER_TYPE_ADD</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#MARKER_TYPE_ADD" class="anchor">#</a>
+				<code><span class="php-quote">'add'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="MARKER_TYPE_DELETE" id="MARKER_TYPE_DELETE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-MARKER_TYPE_DELETE.html#131" title="Go to source code"><b>MARKER_TYPE_DELETE</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#MARKER_TYPE_DELETE" class="anchor">#</a>
+				<code><span class="php-quote">'delete'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATCH_TYPE_ADD" id="PATCH_TYPE_ADD">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-PATCH_TYPE_ADD.html#133" title="Go to source code"><b>PATCH_TYPE_ADD</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATCH_TYPE_ADD" class="anchor">#</a>
+				<code><span class="php-quote">'add'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATCH_TYPE_DELETE" id="PATCH_TYPE_DELETE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-PATCH_TYPE_DELETE.html#134" title="Go to source code"><b>PATCH_TYPE_DELETE</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATCH_TYPE_DELETE" class="anchor">#</a>
+				<code><span class="php-quote">'delete'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATCH_METHOD_TO_BEGINING" id="PATCH_METHOD_TO_BEGINING">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-PATCH_METHOD_TO_BEGINING.html#135" title="Go to source code"><b>PATCH_METHOD_TO_BEGINING</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATCH_METHOD_TO_BEGINING" class="anchor">#</a>
+				<code><span class="php-quote">'add_to_begininig'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATCH_METHOD_TO_END" id="PATCH_METHOD_TO_END">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-PATCH_METHOD_TO_END.html#136" title="Go to source code"><b>PATCH_METHOD_TO_END</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATCH_METHOD_TO_END" class="anchor">#</a>
+				<code><span class="php-quote">'add_to_end'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATCH_METHOD_BEFORE" id="PATCH_METHOD_BEFORE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-PATCH_METHOD_BEFORE.html#137" title="Go to source code"><b>PATCH_METHOD_BEFORE</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATCH_METHOD_BEFORE" class="anchor">#</a>
+				<code><span class="php-quote">'add_before'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATCH_METHOD_AFTER" id="PATCH_METHOD_AFTER">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-PATCH_METHOD_AFTER.html#138" title="Go to source code"><b>PATCH_METHOD_AFTER</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATCH_METHOD_AFTER" class="anchor">#</a>
+				<code><span class="php-quote">'add_after'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATCH_METHOD_REPLACE" id="PATCH_METHOD_REPLACE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-PATCH_METHOD_REPLACE.html#139" title="Go to source code"><b>PATCH_METHOD_REPLACE</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATCH_METHOD_REPLACE" class="anchor">#</a>
+				<code><span class="php-quote">'replace'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PATCH_METHOD_REG_REPLACE" id="PATCH_METHOD_REG_REPLACE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-constant-PATCH_METHOD_REG_REPLACE.html#140" title="Go to source code"><b>PATCH_METHOD_REG_REPLACE</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PATCH_METHOD_REG_REPLACE" class="anchor">#</a>
+				<code><span class="php-quote">'reg_replace'</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="caseSensetive" id="$caseSensetive">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#142-145" title="Go to source code"><var>$caseSensetive</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$caseSensetive" class="anchor">#</a>
+				<code><span class="php-quote">''</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="checkDuplicate" id="$checkDuplicate">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#147-150" title="Go to source code"><var>$checkDuplicate</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$checkDuplicate" class="anchor">#</a>
+				<code><span class="php-keyword1">TRUE</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="storage" id="$storage">
+		<td class="attributes"><code>
+			protected  
+			AMI_iStorage
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#152-155" title="Go to source code"><var>$storage</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$storage" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="marker" id="$marker">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#157-160" title="Go to source code"><var>$marker</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$marker" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="re" id="$re">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#162-165" title="Go to source code"><var>$re</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$re" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="contents" id="$contents">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#167-170" title="Go to source code"><var>$contents</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$contents" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="changed" id="$changed">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#172-175" title="Go to source code"><var>$changed</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$changed" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="sets" id="$sets">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#177-180" title="Go to source code"><var>$sets</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$sets" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a><br>
+		Documentation generated on Sun, 28 Feb 2016 01:03:16 +0700
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
