@@ -9,6 +9,102 @@
 /**
  * Amiro.CMS templates updater.
  *
+ * Example:
+ * <code>
+ * // "install_after.php" / "install.php" context
+ *
+ * $tplStorage = AMI::getResource('storage/tpl');
+ * $updater = new PHPOID_Distribution_TemplateUpdater(
+ *     $tplStorage,
+ *     $this->oArgs->modId
+ * );
+ * $template = "templates/someTemplate.tpl";
+ * $updater->load($template);
+ *
+ * $prependix = <<<EOT
+ * <h1>This code will be added to the begining of set</h1>
+ * EOT;
+ * $updater->patch(
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_TO_BEGINING,
+ *     array('setName1', 'setName2),
+ *     $prependix
+ * );
+ *
+ * $appenix = <<<EOT
+ * <h1>This code will be added to the end of set</h1>
+ * EOT;
+ * $updater->patch(
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_TO_END,
+ *     array('setName1', 'setName2),
+ *     $appenix
+ * );
+ *
+ * $insertion = <<<EOT
+ * <h1>This code will be added once before searching string</h1>
+ * EOT;
+ * $updater->patch(
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_BEFORE,
+ *     array('setName1', 'setName2),
+ *     $insertion,
+ *     'searching string'
+ * );
+ *
+ * $insertion = <<<EOT
+ * <h1>This code will be added once after searching string</h1>
+ * EOT;
+ * $updater->patch(
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_AFTER,
+ *     array('setName1', 'setName2),
+ *     $insertion,
+ *     'searching string'
+ * );
+ *
+ * $replacement = <<<EOT
+ * <h1>This code will replace all searching strings</h1>
+ * EOT;
+ * $updater->patch(
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_REPLACE,
+ *     array('setName1', 'setName2),
+ *     $replacement,
+ *     'searching string'
+ * );
+ *
+ * $replacement = <<<EOT
+ * <h1>This code will replace searching string (searching string will be
+ * processed as regular expression)</h1>
+ * EOT;
+ * $updater->patch(
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_REPLACE_REG,
+ *     array('setName1', 'setName2),
+ *     $replacement,
+ *     '/reqular expression/'
+ * );
+ *
+ * $updater->save($template);
+ *
+ *
+ * // "uninstall_before.php" / "uninstall_after.php" / "uninstall.php" /
+ * // "uninstall_all.php" context
+ *
+ * // Next call will rollback all changes by marker
+ * $tplStorage = AMI::getResource('storage/tpl');
+ * $updater = new PHPOID_Distribution_TemplateUpdater(
+ *     $tplStorage,
+ *     $this->oArgs->modId
+ * );
+ * $template = "templates/someTemplate.tpl";
+ * $updater->load($template);
+ * $updater->rollback();
+ *
+ * $updater->save($template);
+ * </code>
+ *
  * @package    Distribution
  * @subpackage Template
  * @link       https://github.com/php0id/PHPOID/tree/master
@@ -338,7 +434,10 @@ class PHPOID_Distribution_TemplateUpdater
      *         {@see self::ERR_INVALID_PATCH_TYPE},
      *         {@see self::ERR_INVALID_PATCH_METHOD}
      */
-    public function patch($type, $method, array $names, $contents = FALSE, $pattern = FALSE)
+    public function patch(
+        $type, $method, array $names,
+        $contents = FALSE, $pattern = FALSE
+    )
     {
         $types = array(
             self::PATCH_TYPE_ADD    => self::MARKER_TYPE_ADD,
