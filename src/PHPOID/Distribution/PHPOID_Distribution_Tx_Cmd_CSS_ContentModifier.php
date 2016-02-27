@@ -1,9 +1,10 @@
 <?php
 /**
- * @copyright <a href="http://php0id.web-box.ru/" target="_blank">php0id</a>
- * @package   Distribution
- * @license   https://opensource.org/licenses/mit-license.php
- * @version   {$Id}
+ * @copyright  <a href="http://php0id.web-box.ru/" target="_blank">php0id</a>
+ * @package    Distribution
+ * @subpackage TxCommand
+ * @license    https://opensource.org/licenses/mit-license.php
+ * @version    {$Id}
  */
 
 /**

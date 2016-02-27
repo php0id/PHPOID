@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>PHPOID - Amiro.CMS functionality extension</title>
+	<title>Tree | PHPOID - Amiro.CMS functionality extension</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -12,7 +12,8 @@
 <body>
 <div id="left">
 	<div id="menu">
-<span>Overview</span>
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
 
 		<div id="groups">
 		</div>
@@ -43,20 +44,20 @@
 	<form id="search">
 		<input type="hidden" name="cx" value="">
 		<input type="hidden" name="ie" value="UTF-8">
-		<input type="text" name="q" class="text" placeholder="Search" autofocus>
+		<input type="text" name="q" class="text" placeholder="Search">
 	</form>
 
 	<div id="navigation">
 		<ul>
-			<li class="active">
-<span>Overview</span>			</li>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
 			<li>
 <span>Class</span>			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
-			</li>
+			<li class="active">
+<span>Tree</span>			</li>
 				<li>
 					<a href="annotation-group-todo.html" title="List of elements with todo annotation">
 						<span>Todo</span>
@@ -68,33 +69,27 @@
 	</div>
 
 <div id="content">
-	<h1>PHPOID - Amiro.CMS functionality extension</h1>
+	<h1>Tree</h1>
 
+		<h3>Classes</h3>
+<div class="tree">
+	<ul>
 
+			<li><div class="notlast"><span>AMI_Tx_Cmd_Storage_ContentModifier</span>			
+			
+			</div>
 
+				</li>
 
+			<li class="last"><div class="last"><a href="class-PHPOID_Distribution_TemplateUpdater.html"><span>PHPOID_Distribution_TemplateUpdater</span></a>
+			
+			
+			</div>
 
-<table class="summary" id="classes">
-<caption>Classes summary</caption>
-<tr>
-	<td class="name"><a href="class-PHPOID_Distribution_TemplateUpdater.html">PHPOID_Distribution_TemplateUpdater</a></td>
-	<td>Amiro.CMS templates updater.</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall</a></td>
-	<td>Transaction command adding CSS-file content.</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier</a></td>
-	<td>CSS-file content modifier.</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall</a></td>
-	<td>Transaction command deleting part of CSS-file content.</td>
-</tr>
-</table>
-
-
+		</li>
+		
+	</ul>
+</div>
 
 
 
