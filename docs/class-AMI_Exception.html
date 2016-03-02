@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class AMI_Tx_DB | PHPOID - Amiro.CMS functionality extension</title>
+	<title>Class AMI_Exception | PHPOID - Amiro.CMS functionality extension</title>
 
 	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
@@ -40,7 +40,7 @@
 				<li><a href="class-AMI_Tx_Cmd_Tpl_ContentInstall.html">AMI_Tx_Cmd_Tpl_ContentInstall</a></li>
 				<li><a href="class-AMI_Tx_Cmd_Tpl_ContentModifier.html">AMI_Tx_Cmd_Tpl_ContentModifier</a></li>
 				<li><a href="class-AMI_Tx_Cmd_Tpl_ContentUninstall.html">AMI_Tx_Cmd_Tpl_ContentUninstall</a></li>
-				<li class="active"><a href="class-AMI_Tx_DB.html">AMI_Tx_DB</a></li>
+				<li><a href="class-AMI_Tx_DB.html">AMI_Tx_DB</a></li>
 				<li><a href="class-AMI_Tx_Storage.html">AMI_Tx_Storage</a></li>
 				<li><a href="class-PHPOID_Distribution_TemplateUpdater.html">PHPOID_Distribution_TemplateUpdater</a></li>
 				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall</a></li>
@@ -57,7 +57,7 @@
 
 			<h3>Exceptions</h3>
 			<ul>
-				<li><a href="class-AMI_Exception.html">AMI_Exception</a></li>
+				<li class="active"><a href="class-AMI_Exception.html">AMI_Exception</a></li>
 				<li><a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a></li>
 			</ul>
 
@@ -99,31 +99,32 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class AMI_Tx_DB</h1>
+	<h1>Class AMI_Exception</h1>
 
 
 	<div class="description">
-	<p>Database transaction.</p>
+	<p>Extended exception.</p>
 	</div>
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
-			<a href="class-AMI_Tx.html"><span>AMI_Tx</span></a>
-			
-			 implements 
-				<a href="class-AMI_iTx.html"><span>AMI_iTx</span></a>
+Exception
 			
 			
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>AMI_Tx_DB</span></b>			
+<b><span>AMI_Exception</span></b>			
 			
 			
 		</dd>
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a>
+	</div>
 
 
 
@@ -134,13 +135,13 @@
 		
 		
 		
-		<b>Package:</b> TxService\Controller<br>
+		<b>Package:</b> Service<br>
 
 				<b>Copyright:</b>
 				Amiro.CMS. All rights reserved. The changes are undesirable and dangerous.<br>
 				<b>Since:</b>
 				6.0.2<br>
-			<b>Located at</b> <a href="source-class-AMI_Tx_DB.html#1000-1091" title="Go to source code">PHPOID/Distribution/AMI_Tx.php</a>
+			<b>Located at</b> <a href="source-class-AMI_Exception.html#10-49" title="Go to source code">PHPOID/Distribution/AMI_Exception.php</a>
 		<br>
 	</div>
 
@@ -160,57 +161,67 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-AMI_Tx_DB.html#1019-1024" title="Go to source code">__construct</a>( )</code>
+		<code><a href="source-class-AMI_Exception.html#24-39" title="Go to source code">__construct</a>( <span>string <var>$message</var> = <span class="php-quote">''</span></span>, <span>integer <var>$code</var> = <span class="php-num">0</span></span>, <span>Exception <var>$oPrevious</var> = <span class="php-keyword1">NULL</span></span>, <span>mixed <var>$data</var> = <span class="php-keyword1">NULL</span></span> )</code>
 
 		<div class="description short">
-			<p>Constructor.</p>
+			<p>Construct the exception.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Constructor.</p>
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="revert" id="_revert">
-
-		<td class="attributes"><code>
-			 public 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_revert">#</a>
-		<code><a href="source-class-AMI_Tx_DB.html#1026-1090" title="Go to source code">revert</a>( <span>array <var>$aRollbackData</var></span>, <span>boolean <var>$output</var> = <span class="php-keyword1">TRUE</span></span> )</code>
-
-		<div class="description short">
-			<p>Revert (offline rollback) last tracnsaction.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Revert (offline rollback) last tracnsaction.</p>
+			<p>Construct the exception.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$aRollbackData</var></dt>
-					<dd>Rollback data</dd>
-					<dt><var>$output</var></dt>
-					<dd>Do output details</dd>
+					<dt><var>$message</var></dt>
+					<dd>The Exception message to throw</dd>
+					<dt><var>$code</var></dt>
+					<dd>The Exception code</dd>
+					<dt><var>$oPrevious</var></dt>
+					<dd>The previous exception used for the exception chaining</dd>
+					<dt><var>$data</var></dt>
+					<dd>Exception data</dd>
 				</dl></div>
 
 
 
 
+				<h4>Overrides</h4>
+				<div class="list"><code>Exception::__construct()</code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getData" id="_getData">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getData">#</a>
+		<code><a href="source-class-AMI_Exception.html#41-48" title="Go to source code">getData</a>( )</code>
+
+		<div class="description short">
+			<p>Returns exception data.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns exception data.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed
+				</div>
+
+
+
 
 		</div>
 		</div></td>
@@ -218,22 +229,18 @@
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-AMI_Tx.html#methods">AMI_Tx</a></caption>
+	<caption>Methods inherited from Exception</caption>
 	<tr>
 		<td><code>
-			<a href="class-AMI_Tx.html#_addCommand">addCommand()</a>, 
-			<a href="class-AMI_Tx.html#_addCommandResources">addCommandResources()</a>, 
-			<a href="class-AMI_Tx.html#_commit">commit()</a>, 
-			<a href="class-AMI_Tx.html#_getBackupName">getBackupName()</a>, 
-			<a href="class-AMI_Tx.html#_isStarted">isStarted()</a>, 
-			<a href="class-AMI_Tx.html#_log">log()</a>, 
-			<a href="class-AMI_Tx.html#_output">output()</a>, 
-			<a href="class-AMI_Tx.html#_precommit">precommit()</a>, 
-			<a href="class-AMI_Tx.html#_rollback">rollback()</a>, 
-			<a href="class-AMI_Tx.html#_setBackupName">setBackupName()</a>, 
-			<a href="class-AMI_Tx.html#_setExistence">setExistence()</a>, 
-			<a href="class-AMI_Tx.html#_start">start()</a>, 
-			<a href="class-AMI_Tx.html#_updateState">updateState()</a>
+__toString(), 
+__wakeup(), 
+getCode(), 
+getFile(), 
+getLine(), 
+getMessage(), 
+getPrevious(), 
+getTrace(), 
+getTraceAsString()
 		</code></td>
 	</tr>
 	</table>
@@ -245,69 +252,46 @@
 
 
 
-	<table class="summary inherited">
-	<caption>Constants inherited from <a href="class-AMI_iTx.html#constants">AMI_iTx</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-AMI_iTx.html#LOG_ERR"><b>LOG_ERR</b></a>, 
-			<a href="class-AMI_iTx.html#LOG_NOTE"><b>LOG_NOTE</b></a>, 
-			<a href="class-AMI_iTx.html#LOG_WARN"><b>LOG_WARN</b></a>
-		</code></td>
-	</tr>
-	</table>
 
 
 
 	<table class="summary properties" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="aCmdResources" id="$aCmdResources">
+	<tr data-order="data" id="$data">
 		<td class="attributes"><code>
 			protected  
-			array
+			mixed
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-AMI_Tx_DB.html#1008-1017" title="Go to source code"><var>$aCmdResources</var></a>
+				<a href="source-class-AMI_Exception.html#17-22" title="Go to source code"><var>$data</var></a>
 
 			<div class="description short">
-				<p>Array of supported commands</p>
+				<p>Data</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Array of supported commands</p>
+				<p>Data</p>
 
 			</div>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$aCmdResources" class="anchor">#</a>
-				<code><span class="php-keyword1">array</span>(
-    <span class="php-quote">'table/create'</span> =&gt; <span class="php-quote">'tx/cmd/db/table/create'</span>,
-    <span class="php-quote">'table/drop'</span>   =&gt; <span class="php-quote">'tx/cmd/db/table/drop'</span>,
-    <span class="php-quote">'query'</span>        =&gt; <span class="php-quote">'tx/cmd/db/query'</span>
-)</code>
+				<a href="#$data" class="anchor">#</a>
+				<code></code>
 			</div>
 		</td>
 	</tr>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-AMI_Tx.html#properties">AMI_Tx</a></caption>
+	<caption>Properties inherited from Exception</caption>
 	<tr>
 		<td><code>
-			<a href="class-AMI_Tx.html#$aBackup"><var>$aBackup</var></a>, 
-			<a href="class-AMI_Tx.html#$aCmds"><var>$aCmds</var></a>, 
-			<a href="class-AMI_Tx.html#$aExecutingCmds"><var>$aExecutingCmds</var></a>, 
-			<a href="class-AMI_Tx.html#$aExistence"><var>$aExistence</var></a>, 
-			<a href="class-AMI_Tx.html#$aPrecommitedCmds"><var>$aPrecommitedCmds</var></a>, 
-			<a href="class-AMI_Tx.html#$aState"><var>$aState</var></a>, 
-			<a href="class-AMI_Tx.html#$cmdsCount"><var>$cmdsCount</var></a>, 
-			<a href="class-AMI_Tx.html#$index"><var>$index</var></a>, 
-			<a href="class-AMI_Tx.html#$localStateIndex"><var>$localStateIndex</var></a>, 
-			<a href="class-AMI_Tx.html#$oCommitException"><var>$oCommitException</var></a>, 
-			<a href="class-AMI_Tx.html#$started"><var>$started</var></a>, 
-			<a href="class-AMI_Tx.html#$stateIndex"><var>$stateIndex</var></a>, 
-			<a href="class-AMI_Tx.html#$statePath"><var>$statePath</var></a>
+<var>$code</var>, 
+<var>$file</var>, 
+<var>$line</var>, 
+<var>$message</var>
 		</code></td>
 	</tr>
 	</table>
