@@ -23,12 +23,37 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-AMI_Tx.html">AMI_Tx</a></li>
+				<li><a href="class-AMI_Tx_Cmd.html">AMI_Tx_Cmd</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Args.html">AMI_Tx_Cmd_Args</a></li>
+				<li><a href="class-AMI_Tx_Cmd_INI_ContentInstall.html">AMI_Tx_Cmd_INI_ContentInstall</a></li>
+				<li><a href="class-AMI_Tx_Cmd_INI_ContentModifier.html">AMI_Tx_Cmd_INI_ContentModifier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_INI_ContentUninstall.html">AMI_Tx_Cmd_INI_ContentUninstall</a></li>
+				<li><a href="class-AMI_Tx_Cmd_PHP_ContentIntsall.html">AMI_Tx_Cmd_PHP_ContentIntsall</a></li>
+				<li><a href="class-AMI_Tx_Cmd_PHP_ContentModifier.html">AMI_Tx_Cmd_PHP_ContentModifier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_PHP_ContentUninstall.html">AMI_Tx_Cmd_PHP_ContentUninstall</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Storage.html">AMI_Tx_Cmd_Storage</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Storage_Cleaner.html">AMI_Tx_Cmd_Storage_Cleaner</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Storage_ContentModifier.html">AMI_Tx_Cmd_Storage_ContentModifier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Storage_ContentSetter.html">AMI_Tx_Cmd_Storage_ContentSetter</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Storage_Copier.html">AMI_Tx_Cmd_Storage_Copier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Tpl_ContentInstall.html">AMI_Tx_Cmd_Tpl_ContentInstall</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Tpl_ContentModifier.html">AMI_Tx_Cmd_Tpl_ContentModifier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Tpl_ContentUninstall.html">AMI_Tx_Cmd_Tpl_ContentUninstall</a></li>
+				<li><a href="class-AMI_Tx_DB.html">AMI_Tx_DB</a></li>
+				<li><a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a></li>
+				<li><a href="class-AMI_Tx_Storage.html">AMI_Tx_Storage</a></li>
 				<li class="active"><a href="class-PHPOID_Distribution_TemplateUpdater.html">PHPOID_Distribution_TemplateUpdater</a></li>
 				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall</a></li>
 				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier</a></li>
 				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall</a></li>
 			</ul>
 
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-AMI_iTx.html">AMI_iTx</a></li>
+				<li><a href="class-AMI_iTx_Cmd.html">AMI_iTx_Cmd</a></li>
+			</ul>
 
 
 
@@ -147,7 +172,7 @@ processed as regular expression)&lt;/h1&gt;
 EOT;
 $updater-&gt;patch(
     PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
-    PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_REPLACE_REG,
+    PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_REG_REPLACE,
     array('</span>setName1<span class="php-quote">', '</span>setName2),
     <span class="php-var">$replacement</span>,
     <span class="php-quote">'/reqular expression/'</span>
@@ -197,7 +222,7 @@ $updater-&gt;patch(
             self::PATCH_METHOD_BEFORE &amp; self::PATCH_METHOD_AFTER,
             preg_replace_callback() usage possibility on
             self::PATCH_METHOD_REG_REPLACE.</p><br>
-			<b>Located at</b> <a href="source-class-PHPOID_Distribution_TemplateUpdater.html#10-705" title="Go to source code">PHPOID/Distribution/PHPOID_Distribution_TemplateUpdater.php</a>
+			<b>Located at</b> <a href="source-class-PHPOID_Distribution_TemplateUpdater.html#10-703" title="Go to source code">PHPOID/Distribution/PHPOID_Distribution_TemplateUpdater.php</a>
 		<br>
 	</div>
 
@@ -217,7 +242,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#183-197" title="Go to source code">__construct</a>( <span>AMI_iStorage <var>$storage</var></span>, <span>string <var>$marker</var></span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#182-196" title="Go to source code">__construct</a>( <span>AMI_iStorage <var>$storage</var></span>, <span>string <var>$marker</var></span> )</code>
 
 		<div class="description short">
 			<p>Constructor.</p>
@@ -254,7 +279,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setDuplicatesChecking">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#199-208" title="Go to source code">setDuplicatesChecking</a>( <span>boolean <var>$checkDuplicate</var></span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#198-207" title="Go to source code">setDuplicatesChecking</a>( <span>boolean <var>$checkDuplicate</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets checking for duplicate patching.</p>
@@ -289,7 +314,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRawContents">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#210-220" title="Go to source code">setRawContents</a>( <span>string <var>$contents</var></span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#209-219" title="Go to source code">setRawContents</a>( <span>string <var>$contents</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets raw template contents.</p>
@@ -324,7 +349,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRawContents">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#222-230" title="Go to source code">getRawContents</a>( )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#221-229" title="Go to source code">getRawContents</a>( )</code>
 
 		<div class="description short">
 			<p>Returns template raw contents.</p>
@@ -358,7 +383,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_load">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#232-251" title="Go to source code">load</a>( <span>string <var>$template</var></span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#231-250" title="Go to source code">load</a>( <span>string <var>$template</var></span> )</code>
 
 		<div class="description short">
 			<p>Loads template contents.</p>
@@ -397,7 +422,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_save">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#253-279" title="Go to source code">save</a>( <span>string <var>$template</var></span>, <span>string <var>$backup</var> = <span class="php-quote">''</span></span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#252-278" title="Go to source code">save</a>( <span>string <var>$template</var></span>, <span>string <var>$backup</var> = <span class="php-quote">''</span></span> )</code>
 
 		<div class="description short">
 			<p>Saves template contents.</p>
@@ -438,7 +463,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSetsByName">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#281-309" title="Go to source code">getSetsByName</a>( <span>string <var>$name</var> = <span class="php-quote">''</span></span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#280-308" title="Go to source code">getSetsByName</a>( <span>string <var>$name</var> = <span class="php-quote">''</span></span> )</code>
 
 		<div class="description short">
 			<p>Returns sets by passed name</p>
@@ -477,7 +502,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_parseSet">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#311-329" title="Go to source code">parseSet</a>( <span>string <var>$contents</var></span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#310-328" title="Go to source code">parseSet</a>( <span>string <var>$contents</var></span> )</code>
 
 		<div class="description short">
 			
@@ -516,7 +541,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setContents">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#331-360" title="Go to source code">setContents</a>( <span>string <var>$name</var></span>, <span>string <var>$contents</var></span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#330-359" title="Go to source code">setContents</a>( <span>string <var>$name</var></span>, <span>string <var>$contents</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets set contents.</p>
@@ -553,7 +578,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMarker">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#362-417" title="Go to source code">getMarker</a>( <span>string <var>$position</var></span>, <span>string <var>$type</var></span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#361-416" title="Go to source code">getMarker</a>( <span>string <var>$position</var></span>, <span>string <var>$type</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns marker for future template rollback.</p>
@@ -602,7 +627,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_patch">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#419-648" title="Go to source code">patch</a>( <span>string <var>$type</var></span>, <span>string <var>$method</var></span>, <span>array <var>$names</var></span>, <span>string <var>$contents</var> = <span class="php-keyword1">FALSE</span></span>, <span>string <var>$pattern</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#418-646" title="Go to source code">patch</a>( <span>string <var>$type</var></span>, <span>string <var>$method</var></span>, <span>array <var>$names</var></span>, <span>string <var>$contents</var> = <span class="php-keyword1">FALSE</span></span>, <span>string <var>$pattern</var> = <span class="php-keyword1">FALSE</span> </span> )</code>
 
 		<div class="description short">
 			<p>Patch sets.</p>
@@ -615,8 +640,7 @@ $updater-&gt;patch(
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$type</var></dt>
-					<dd><p><a href="self::PATCH_TYPE_ADD">self::PATCH_TYPE_ADD</a> or
-                          <a href="self::PATCH_TYPE_DELETE">self::PATCH_TYPE_DELETE</a></p></dd>
+					<dd><a href="self::PATCH_TYPE_ADD">self::PATCH_TYPE_ADD</a></dd>
 					<dt><var>$method</var></dt>
 					<dd><p><a href="self::PATCH_METHOD_TO_BEGINING">self::PATCH_METHOD_TO_BEGINING</a>,
                           <a href="self::PATCH_METHOD_TO_END">self::PATCH_METHOD_TO_END</a>,
@@ -657,7 +681,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_rollback">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#650-693" title="Go to source code">rollback</a>( )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#648-691" title="Go to source code">rollback</a>( )</code>
 
 		<div class="description short">
 			<p>Rollbacks patch.</p>
@@ -687,7 +711,7 @@ $updater-&gt;patch(
 
 		<td class="name"><div>
 		<a class="anchor" href="#_parseSets">#</a>
-		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#695-704" title="Go to source code">parseSets</a>( )</code>
+		<code><a href="source-class-PHPOID_Distribution_TemplateUpdater.html#693-702" title="Go to source code">parseSets</a>( )</code>
 
 		<div class="description short">
 			
@@ -1028,36 +1052,12 @@ $updater-&gt;patch(
 			</div>
 		</td>
 	</tr>
-	<tr data-order="PATCH_TYPE_DELETE" id="PATCH_TYPE_DELETE">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name">
-			<code>
-				<a href="source-constant-PATCH_TYPE_DELETE.html#135" title="Go to source code"><b>PATCH_TYPE_DELETE</b></a>
-			</code>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</td>
-		<td class="value">
-			<div>
-				<a href="#PATCH_TYPE_DELETE" class="anchor">#</a>
-				<code><span class="php-quote">'delete'</span></code>
-			</div>
-		</td>
-	</tr>
 	<tr data-order="PATCH_METHOD_TO_BEGINING" id="PATCH_METHOD_TO_BEGINING">
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name">
 			<code>
-				<a href="source-constant-PATCH_METHOD_TO_BEGINING.html#136" title="Go to source code"><b>PATCH_METHOD_TO_BEGINING</b></a>
+				<a href="source-constant-PATCH_METHOD_TO_BEGINING.html#135" title="Go to source code"><b>PATCH_METHOD_TO_BEGINING</b></a>
 			</code>
 
 			<div class="description short">
@@ -1081,7 +1081,7 @@ $updater-&gt;patch(
 		<td class="attributes"><code>string</code></td>
 		<td class="name">
 			<code>
-				<a href="source-constant-PATCH_METHOD_TO_END.html#137" title="Go to source code"><b>PATCH_METHOD_TO_END</b></a>
+				<a href="source-constant-PATCH_METHOD_TO_END.html#136" title="Go to source code"><b>PATCH_METHOD_TO_END</b></a>
 			</code>
 
 			<div class="description short">
@@ -1105,7 +1105,7 @@ $updater-&gt;patch(
 		<td class="attributes"><code>string</code></td>
 		<td class="name">
 			<code>
-				<a href="source-constant-PATCH_METHOD_BEFORE.html#138" title="Go to source code"><b>PATCH_METHOD_BEFORE</b></a>
+				<a href="source-constant-PATCH_METHOD_BEFORE.html#137" title="Go to source code"><b>PATCH_METHOD_BEFORE</b></a>
 			</code>
 
 			<div class="description short">
@@ -1129,7 +1129,7 @@ $updater-&gt;patch(
 		<td class="attributes"><code>string</code></td>
 		<td class="name">
 			<code>
-				<a href="source-constant-PATCH_METHOD_AFTER.html#139" title="Go to source code"><b>PATCH_METHOD_AFTER</b></a>
+				<a href="source-constant-PATCH_METHOD_AFTER.html#138" title="Go to source code"><b>PATCH_METHOD_AFTER</b></a>
 			</code>
 
 			<div class="description short">
@@ -1153,7 +1153,7 @@ $updater-&gt;patch(
 		<td class="attributes"><code>string</code></td>
 		<td class="name">
 			<code>
-				<a href="source-constant-PATCH_METHOD_REPLACE.html#140" title="Go to source code"><b>PATCH_METHOD_REPLACE</b></a>
+				<a href="source-constant-PATCH_METHOD_REPLACE.html#139" title="Go to source code"><b>PATCH_METHOD_REPLACE</b></a>
 			</code>
 
 			<div class="description short">
@@ -1177,7 +1177,7 @@ $updater-&gt;patch(
 		<td class="attributes"><code>string</code></td>
 		<td class="name">
 			<code>
-				<a href="source-constant-PATCH_METHOD_REG_REPLACE.html#141" title="Go to source code"><b>PATCH_METHOD_REG_REPLACE</b></a>
+				<a href="source-constant-PATCH_METHOD_REG_REPLACE.html#140" title="Go to source code"><b>PATCH_METHOD_REG_REPLACE</b></a>
 			</code>
 
 			<div class="description short">
@@ -1210,7 +1210,7 @@ $updater-&gt;patch(
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#143-146" title="Go to source code"><var>$caseSensetive</var></a>
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#142-145" title="Go to source code"><var>$caseSensetive</var></a>
 
 			<div class="description short">
 				
@@ -1235,7 +1235,7 @@ $updater-&gt;patch(
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#148-151" title="Go to source code"><var>$checkDuplicate</var></a>
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#147-150" title="Go to source code"><var>$checkDuplicate</var></a>
 
 			<div class="description short">
 				
@@ -1260,7 +1260,7 @@ $updater-&gt;patch(
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#153-156" title="Go to source code"><var>$storage</var></a>
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#152-155" title="Go to source code"><var>$storage</var></a>
 
 			<div class="description short">
 				
@@ -1285,7 +1285,7 @@ $updater-&gt;patch(
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#158-161" title="Go to source code"><var>$marker</var></a>
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#157-160" title="Go to source code"><var>$marker</var></a>
 
 			<div class="description short">
 				
@@ -1310,7 +1310,7 @@ $updater-&gt;patch(
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#163-166" title="Go to source code"><var>$re</var></a>
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#162-165" title="Go to source code"><var>$re</var></a>
 
 			<div class="description short">
 				
@@ -1335,7 +1335,7 @@ $updater-&gt;patch(
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#168-171" title="Go to source code"><var>$contents</var></a>
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#167-170" title="Go to source code"><var>$contents</var></a>
 
 			<div class="description short">
 				
@@ -1360,7 +1360,7 @@ $updater-&gt;patch(
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#173-176" title="Go to source code"><var>$changed</var></a>
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#172-175" title="Go to source code"><var>$changed</var></a>
 
 			<div class="description short">
 				
@@ -1385,7 +1385,7 @@ $updater-&gt;patch(
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#178-181" title="Go to source code"><var>$sets</var></a>
+				<a href="source-class-PHPOID_Distribution_TemplateUpdater.html#177-180" title="Go to source code"><var>$sets</var></a>
 
 			<div class="description short">
 				
@@ -1414,7 +1414,7 @@ $updater-&gt;patch(
 
 	<div id="footer">
 		PHPOID - Amiro.CMS functionality extension API documentation generated by <a href="http://apigen.org">ApiGen</a><br>
-		Documentation generated on Sun, 28 Feb 2016 01:23:51 +0700
+		Documentation generated on Wed, 02 Mar 2016 15:35:21 +0700
 	</div>
 </div>
 </div>

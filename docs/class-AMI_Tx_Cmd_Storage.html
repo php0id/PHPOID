@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class AMI_Tx_Cmd_Storage | PHPOID - Amiro.CMS functionality extension</title>
+
+	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+		</div>
+
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-AMI_Tx.html">AMI_Tx</a></li>
+				<li><a href="class-AMI_Tx_Cmd.html">AMI_Tx_Cmd</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Args.html">AMI_Tx_Cmd_Args</a></li>
+				<li><a href="class-AMI_Tx_Cmd_INI_ContentInstall.html">AMI_Tx_Cmd_INI_ContentInstall</a></li>
+				<li><a href="class-AMI_Tx_Cmd_INI_ContentModifier.html">AMI_Tx_Cmd_INI_ContentModifier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_INI_ContentUninstall.html">AMI_Tx_Cmd_INI_ContentUninstall</a></li>
+				<li><a href="class-AMI_Tx_Cmd_PHP_ContentIntsall.html">AMI_Tx_Cmd_PHP_ContentIntsall</a></li>
+				<li><a href="class-AMI_Tx_Cmd_PHP_ContentModifier.html">AMI_Tx_Cmd_PHP_ContentModifier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_PHP_ContentUninstall.html">AMI_Tx_Cmd_PHP_ContentUninstall</a></li>
+				<li class="active"><a href="class-AMI_Tx_Cmd_Storage.html">AMI_Tx_Cmd_Storage</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Storage_Cleaner.html">AMI_Tx_Cmd_Storage_Cleaner</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Storage_ContentModifier.html">AMI_Tx_Cmd_Storage_ContentModifier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Storage_ContentSetter.html">AMI_Tx_Cmd_Storage_ContentSetter</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Storage_Copier.html">AMI_Tx_Cmd_Storage_Copier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Tpl_ContentInstall.html">AMI_Tx_Cmd_Tpl_ContentInstall</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Tpl_ContentModifier.html">AMI_Tx_Cmd_Tpl_ContentModifier</a></li>
+				<li><a href="class-AMI_Tx_Cmd_Tpl_ContentUninstall.html">AMI_Tx_Cmd_Tpl_ContentUninstall</a></li>
+				<li><a href="class-AMI_Tx_DB.html">AMI_Tx_DB</a></li>
+				<li><a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a></li>
+				<li><a href="class-AMI_Tx_Storage.html">AMI_Tx_Storage</a></li>
+				<li><a href="class-PHPOID_Distribution_TemplateUpdater.html">PHPOID_Distribution_TemplateUpdater</a></li>
+				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall</a></li>
+				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier</a></li>
+				<li><a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-AMI_iTx.html">AMI_iTx</a></li>
+				<li><a href="class-AMI_iTx_Cmd.html">AMI_iTx_Cmd</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+				<li>
+					<a href="annotation-group-todo.html" title="List of elements with todo annotation">
+						<span>Todo</span>
+					</a>
+				</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class AMI_Tx_Cmd_Storage</h1>
+
+
+	<div class="description">
+	<p>Abstract storage transaction command.</p>
+
+<p>Expects in $oArgs constructor arguments:
+- mode    - command execustion mode (AMI_iTx_Cmd::MODE_* constants);
+- source  - source file path;
+- target  - target file path;
+- content - (optional) content to set by AMI_Tx_Cmd_FS::set().</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-AMI_Tx_Cmd.html"><span>AMI_Tx_Cmd</span></a>
+			
+			 implements 
+				<a href="class-AMI_iTx_Cmd.html"><span>AMI_iTx_Cmd</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>AMI_Tx_Cmd_Storage</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-AMI_Tx_Cmd_Storage_Cleaner.html">AMI_Tx_Cmd_Storage_Cleaner</a>, 
+			<a href="class-AMI_Tx_Cmd_Storage_ContentModifier.html">AMI_Tx_Cmd_Storage_ContentModifier</a>, 
+			<a href="class-AMI_Tx_Cmd_Storage_ContentSetter.html">AMI_Tx_Cmd_Storage_ContentSetter</a>, 
+			<a href="class-AMI_Tx_Cmd_Storage_Copier.html">AMI_Tx_Cmd_Storage_Copier</a>
+	</div>
+
+	<div>
+		<h4>Indirect known subclasses</h4>
+			<a href="class-AMI_Tx_Cmd_INI_ContentInstall.html">AMI_Tx_Cmd_INI_ContentInstall</a>, 
+			<a href="class-AMI_Tx_Cmd_INI_ContentModifier.html">AMI_Tx_Cmd_INI_ContentModifier</a>, 
+			<a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentModifier</a>, 
+			<a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentUninstall</a>, 
+			<a href="class-AMI_Tx_Cmd_INI_ContentUninstall.html">AMI_Tx_Cmd_INI_ContentUninstall</a>, 
+			<a href="class-AMI_Tx_Cmd_PHP_ContentIntsall.html">AMI_Tx_Cmd_PHP_ContentIntsall</a>, 
+			<a href="class-AMI_Tx_Cmd_PHP_ContentModifier.html">AMI_Tx_Cmd_PHP_ContentModifier</a>, 
+			<a href="class-AMI_Tx_Cmd_PHP_ContentUninstall.html">AMI_Tx_Cmd_PHP_ContentUninstall</a>, 
+			<a href="class-AMI_Tx_Cmd_Tpl_ContentInstall.html">AMI_Tx_Cmd_Tpl_ContentInstall</a>, 
+			<a href="class-AMI_Tx_Cmd_Tpl_ContentModifier.html">AMI_Tx_Cmd_Tpl_ContentModifier</a>, 
+			<a href="class-AMI_Tx_Cmd_Tpl_ContentUninstall.html">AMI_Tx_Cmd_Tpl_ContentUninstall</a>, 
+			<a href="class-PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall.html">PHPOID_Distribution_Tx_Cmd_CSS_ContentIntsall</a>
+	</div>
+
+
+
+
+
+	<div class="info">
+		<b>Abstract</b><br>
+		
+		
+		<b>Package:</b> TxCommand\Controller<br>
+
+				<b>Copyright:</b>
+				Amiro.CMS. All rights reserved. The changes are undesirable and dangerous.<br>
+				<b>Since:</b>
+				6.0.2<br>
+				<b>See:</b>
+				AMI_iStorage<br>
+			<b>Located at</b> <a href="source-class-AMI_Tx_Cmd_Storage.html#10-286" title="Go to source code">PHPOID/Distribution/AMI_Tx_Cmd_Storage.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="addResources" id="_addResources">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addResources">#</a>
+		<code><a href="source-class-AMI_Tx_Cmd_Storage.html#53-72" title="Go to source code">addResources</a>( )</code>
+
+		<div class="description short">
+			<p>Adds resources of available commands.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Adds resources of available commands.</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rollback" id="_rollback">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rollback">#</a>
+		<code><a href="source-class-AMI_Tx_Cmd_Storage.html#74-101" title="Go to source code">rollback</a>( )</code>
+
+		<div class="description short">
+			<p>Rollbacks command.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Rollbacks command.</p>
+
+<p>Called on transaction exception cought.</p>
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a></code><br>In case of problems.
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="commit" id="_commit">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_commit">#</a>
+		<code><a href="source-class-AMI_Tx_Cmd_Storage.html#103-144" title="Go to source code">commit</a>( )</code>
+
+		<div class="description short">
+			<p>Commits command.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Commits command.</p>
+
+<p>Called after all commands finished successfully.</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="validateArgs" id="_validateArgs">
+
+		<td class="attributes"><code>
+			 protected 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validateArgs">#</a>
+		<code><a href="source-class-AMI_Tx_Cmd_Storage.html#146-161" title="Go to source code">validateArgs</a>( )</code>
+
+		<div class="description short">
+			<p>Validates passed arguments.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Validates passed arguments.</p>
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a></code><br>In case of problems.
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-AMI_Tx_Cmd.html#___construct">AMI_Tx_Cmd::__construct()</a></code><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="init" id="_init">
+
+		<td class="attributes"><code>
+			 protected 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_init">#</a>
+		<code><a href="source-class-AMI_Tx_Cmd_Storage.html#163-204" title="Go to source code">init</a>( )</code>
+
+		<div class="description short">
+			<p>Initializes command.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Initializes command.</p>
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a></code><br>In case of problems.
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="backup" id="_backup">
+
+		<td class="attributes"><code>
+			 protected 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_backup">#</a>
+		<code><a href="source-class-AMI_Tx_Cmd_Storage.html#206-228" title="Go to source code">backup</a>( )</code>
+
+		<div class="description short">
+			<p>Backups target file.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Backups target file.</p>
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a></code><br>In case of problems.
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="copy" id="_copy">
+
+		<td class="attributes"><code>
+			 protected 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_copy">#</a>
+		<code><a href="source-class-AMI_Tx_Cmd_Storage.html#230-255" title="Go to source code">copy</a>( )</code>
+
+		<div class="description short">
+			<p>Copies source to target file.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Copies source to target file.</p>
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a></code><br>In case of problems.
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="set" id="_set">
+
+		<td class="attributes"><code>
+			 protected 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_set">#</a>
+		<code><a href="source-class-AMI_Tx_Cmd_Storage.html#257-285" title="Go to source code">set</a>( <span>string <var>$content</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Sets target file content.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets target file content.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$content</var></dt>
+					<dd>Content to set</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-AMI_Tx_Exception.html">AMI_Tx_Exception</a></code><br>In case of problems.
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-AMI_Tx_Cmd.html#methods">AMI_Tx_Cmd</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-AMI_Tx_Cmd.html#___construct">__construct()</a>, 
+			<a href="class-AMI_Tx_Cmd.html#_argsToString">argsToString()</a>, 
+			<a href="class-AMI_Tx_Cmd.html#_getLoggingArgs">getLoggingArgs()</a>, 
+			<a href="class-AMI_Tx_Cmd.html#_run">run()</a>, 
+			<a href="class-AMI_Tx_Cmd.html#_validateObligatoryArgs">validateObligatoryArgs()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-AMI_iTx_Cmd.html#constants">AMI_iTx_Cmd</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-AMI_iTx_Cmd.html#MODE_APPEND"><b>MODE_APPEND</b></a>, 
+			<a href="class-AMI_iTx_Cmd.html#MODE_COMMON"><b>MODE_COMMON</b></a>, 
+			<a href="class-AMI_iTx_Cmd.html#MODE_DELETE_BACKUP_ON_COMMIT"><b>MODE_DELETE_BACKUP_ON_COMMIT</b></a>, 
+			<a href="class-AMI_iTx_Cmd.html#MODE_IGNORE_DATA_EXISTENCE"><b>MODE_IGNORE_DATA_EXISTENCE</b></a>, 
+			<a href="class-AMI_iTx_Cmd.html#MODE_IGNORE_TARGET_EXISTENCE"><b>MODE_IGNORE_TARGET_EXISTENCE</b></a>, 
+			<a href="class-AMI_iTx_Cmd.html#MODE_OVERWRITE"><b>MODE_OVERWRITE</b></a>, 
+			<a href="class-AMI_iTx_Cmd.html#MODE_PURGE"><b>MODE_PURGE</b></a>, 
+			<a href="class-AMI_iTx_Cmd.html#MODE_SOFT"><b>MODE_SOFT</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="backuped" id="$backuped">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AMI_Tx_Cmd_Storage.html#25-30" title="Go to source code"><var>$backuped</var></a>
+
+			<div class="description short">
+				<p>Flag specifies if previous file was backuped</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Flag specifies if previous file was backuped</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$backuped" class="anchor">#</a>
+				<code><span class="php-keyword1">FALSE</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="backupPath" id="$backupPath">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AMI_Tx_Cmd_Storage.html#32-37" title="Go to source code"><var>$backupPath</var></a>
+
+			<div class="description short">
+				<p>Path for backup file</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Path for backup file</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$backupPath" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="oStorage" id="$oStorage">
+		<td class="attributes"><code>
+			protected  
+			AMI_iStorage
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AMI_Tx_Cmd_Storage.html#39-44" title="Go to source code"><var>$oStorage</var></a>
+
+			<div class="description short">
+				<p>Storage driver</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Storage driver</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$oStorage" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="eol" id="$eol">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AMI_Tx_Cmd_Storage.html#46-51" title="Go to source code"><var>$eol</var></a>
+
+			<div class="description short">
+				<p>EOL style for conent modifiers</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>EOL style for conent modifiers</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$eol" class="anchor">#</a>
+				<code><span class="php-quote">&quot;\r\n&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-AMI_Tx_Cmd.html#properties">AMI_Tx_Cmd</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-AMI_Tx_Cmd.html#$backupName"><var>$backupName</var></a>, 
+			<a href="class-AMI_Tx_Cmd.html#$oArgs"><var>$oArgs</var></a>, 
+			<a href="class-AMI_Tx_Cmd.html#$oTx"><var>$oTx</var></a>, 
+			<a href="class-AMI_Tx_Cmd.html#$replaceOnCommit"><var>$replaceOnCommit</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		PHPOID - Amiro.CMS functionality extension API documentation generated by <a href="http://apigen.org">ApiGen</a><br>
+		Documentation generated on Wed, 02 Mar 2016 15:35:21 +0700
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

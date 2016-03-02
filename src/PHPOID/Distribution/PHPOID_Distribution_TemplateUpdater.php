@@ -81,7 +81,7 @@
  * EOT;
  * $updater->patch(
  *     PHPOID_Distribution_TemplateUpdater::PATCH_TYPE_ADD,
- *     PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_REPLACE_REG,
+ *     PHPOID_Distribution_TemplateUpdater::PATCH_METHOD_REG_REPLACE,
  *     array('setName1', 'setName2),
  *     $replacement,
  *     '/reqular expression/'
@@ -132,7 +132,6 @@ class PHPOID_Distribution_TemplateUpdater
     const MARKER_TYPE_DELETE = 'delete';
 
     const PATCH_TYPE_ADD           = 'add';
-    const PATCH_TYPE_DELETE        = 'delete';
     const PATCH_METHOD_TO_BEGINING = 'add_to_begininig';
     const PATCH_METHOD_TO_END      = 'add_to_end';
     const PATCH_METHOD_BEFORE      = 'add_before';
@@ -419,8 +418,7 @@ class PHPOID_Distribution_TemplateUpdater
     /**
      * Patch sets.
      *
-     * @param  string $type      {@see self::PATCH_TYPE_ADD} or
-     *                           {@see self::PATCH_TYPE_DELETE}
+     * @param  string $type      {@see self::PATCH_TYPE_ADD}
      * @param  string $method    {@see self::PATCH_METHOD_TO_BEGINING},
      *                           {@see self::PATCH_METHOD_TO_END},
      *                           {@see self::PATCH_METHOD_BEFORE},
@@ -442,7 +440,7 @@ class PHPOID_Distribution_TemplateUpdater
     {
         $types = array(
             self::PATCH_TYPE_ADD    => self::MARKER_TYPE_ADD,
-            self::PATCH_TYPE_DELETE => self::MARKER_TYPE_DELETE,
+            // self::PATCH_TYPE_DELETE => self::MARKER_TYPE_DELETE,
         );
         if (!in_array($type, $types)) {
             throw new InvalidArgumentException(
